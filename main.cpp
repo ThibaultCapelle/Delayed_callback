@@ -17,13 +17,16 @@ void coucou(){
 
 int main()
 {
-    Event_list events(&hello, 2);
+    Event_list events(&hello, 7);
     //Delayed_callback test(time(0),2,&hello);
     //cout << time(0) << endl;
     //test.callback();
+    events.add(&coucou, 2);
+    events.add(&coucou, 3);
     events.add(&hello, 5);
     events.add(&hello, 10);
-    //events.add(&coucou, 4);
+    events.add(&coucou, 3);
+    //events.add(&coucou, 7.5);
     while(events.get_length()>0){
         printf("length of events is %d\n",events.get_length());
         events.check(time(0));

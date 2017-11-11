@@ -9,6 +9,7 @@ Delayed_callback::Delayed_callback()
 
 Delayed_callback::~Delayed_callback()
 {
+    adjust_position_for_deletion();
     //dtor
 }
 
@@ -16,6 +17,7 @@ Delayed_callback::Delayed_callback(Delayed_callback const& call):m_t_final(call.
 {
     m_next= new Delayed_callback((*call.m_next).m_t_ini, (*call.m_next).m_t_final-(*call.m_next).m_t_ini, (*call.m_next).m_callback);
     m_previous = new Delayed_callback((*call.m_previous).m_t_ini, (*call.m_previous).m_t_final-(*call.m_previous).m_t_ini, (*call.m_previous).m_callback);
+    m_position = call.m_position;
 }
 
 Delayed_callback::Delayed_callback(unsigned long t_ini, unsigned long delay, void (*callback)(void)){
@@ -24,6 +26,16 @@ Delayed_callback::Delayed_callback(unsigned long t_ini, unsigned long delay, voi
 		m_callback = callback;
 		m_next=0;
 		m_previous=0;
+		m_position=0;
+}
+
+Delayed_callback::Delayed_callback(unsigned long t_ini, unsigned long delay, void (*callback)(void), int position){
+		m_t_ini = t_ini;
+		m_t_final = t_ini+delay;
+		m_callback = callback;
+		m_next=0;
+		m_previous=0;
+		m_position=position;
 }
 
 void Delayed_callback::Set_callback(void (*callback)(void)){
@@ -36,6 +48,7 @@ void Delayed_callback::callback(){
 
 Delayed_callback* Delayed_callback::get_next(){
     cout<<"get_next"<<endl;
+    printf("position is %d\n", m_position);
     return m_next;
 }
 
@@ -46,7 +59,8 @@ Delayed_callback* Delayed_callback::get_previous(){
 void Delayed_callback::set_next(Delayed_callback* next){
     cout<<"set next"<<endl;
     m_next=next;
-    (*next).set_previous(this);
+    if(next!=0){
+    (*m_next).set_previous(this);}
 }
 
 void Delayed_callback::set_previous(Delayed_callback* previous){
@@ -74,4 +88,22 @@ int Delayed_callback::get_length(){
     }
 }
 
+void Delayed_callback::set_position(int pos){
+    m_position = pos;
+}
+
+int Delayed_callback::get_position(){
+    return m_position;
+}
+
+void Delayed_callback::adjust_position_for_deletion(){
+    if (m_next==0){
+        m_position = m_position-1;
+        return;
+    }
+    else{
+        m_position = m_position-1;
+        (*m_next).adjust_position_for_deletion();
+    }
+}
 
