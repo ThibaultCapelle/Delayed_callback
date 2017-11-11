@@ -1,17 +1,34 @@
 #include <iostream>
 #include "Delayed_callback.h"
+#include "Event_list.h"
 #include <ctime>
+#include <stdio.h>
 
 using namespace std;
 
+time_t t=time(0);
 void hello(){
-    cout<<time(0)<< endl;
+    cout<<"hello"<< endl;
+}
+
+void coucou(){
+    printf("bonjour\n");
 }
 
 int main()
 {
-    Delayed_callback test(0,0,&hello);
-    cout << time(0) << endl;
-    test.callback();
+    Event_list events(&hello, 2);
+    //Delayed_callback test(time(0),2,&hello);
+    //cout << time(0) << endl;
+    //test.callback();
+    events.add(&hello, 5);
+    events.add(&hello, 10);
+    //events.add(&coucou, 4);
+    while(events.get_length()>0){
+        printf("length of events is %d\n",events.get_length());
+        events.check(time(0));
+    }
+    printf("length of events is %d\n",events.get_length());
+    printf("everything went fine\n");
     return 0;
 }

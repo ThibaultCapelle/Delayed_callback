@@ -1,5 +1,7 @@
 #ifndef DELAYED_CALLBACK_H
 #define DELAYED_CALLBACK_H
+#include <iostream>
+#include <stdio.h>
 
 
 class Delayed_callback
@@ -7,13 +9,16 @@ class Delayed_callback
     public:
         Delayed_callback();
         virtual ~Delayed_callback();
-        Delayed_callback(unsigned long t_ini, unsigned long t_final, void (*callback)(void));
+        Delayed_callback(Delayed_callback const& callback);
+        Delayed_callback(unsigned long t_ini, unsigned long delay, void (*callback)(void));
 		void Set_callback(void (*callback)(void));
 		void callback();
 		Delayed_callback* get_next();
 		Delayed_callback* get_previous();
         void set_next(Delayed_callback* next);
 		void set_previous(Delayed_callback* previous);
+		bool check(unsigned long t);
+		int get_length();
 
     protected:
 
