@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1510399249 source:c:\users\thibault\documents\stage 4a\code blocks\delayed_callback\delayed_callback.cpp
+	"Delayed_callback.h"
+
+1510399828 c:\users\thibault\documents\stage 4a\code blocks\delayed_callback\delayed_callback.h
+
+1510399415 source:c:\users\thibault\documents\stage 4a\code blocks\delayed_callback\main.cpp
+	<iostream>
+	"Delayed_callback.h"
+	<ctime>
+
+1510399884 source:c:\users\thibault\documents\github\delayed_callback\delayed_callback.cpp
+	"Delayed_callback.h"
+
+1510399828 c:\users\thibault\documents\github\delayed_callback\delayed_callback.h
+
+1510399415 source:c:\users\thibault\documents\github\delayed_callback\main.cpp
+	<iostream>
+	"Delayed_callback.h"
+	<ctime>
+
