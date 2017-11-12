@@ -1,7 +1,6 @@
 #ifndef DELAYED_CALLBACK_H
 #define DELAYED_CALLBACK_H
-#include <iostream>
-#include <stdio.h>
+
 
 
 class Delayed_callback

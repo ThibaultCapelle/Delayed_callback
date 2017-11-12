@@ -47,8 +47,6 @@ void Delayed_callback::callback(){
 }
 
 Delayed_callback* Delayed_callback::get_next(){
-    cout<<"get_next"<<endl;
-    printf("position is %d\n", m_position);
     return m_next;
 }
 
@@ -57,21 +55,18 @@ Delayed_callback* Delayed_callback::get_previous(){
 }
 
 void Delayed_callback::set_next(Delayed_callback* next){
-    cout<<"set next"<<endl;
     m_next=next;
     if(next!=0){
     (*m_next).set_previous(this);}
 }
 
 void Delayed_callback::set_previous(Delayed_callback* previous){
-    cout<<"set_previous"<<endl;
     m_previous=previous;
 }
 
 bool Delayed_callback::check(unsigned long t){
     if (t>m_t_final){
         callback();
-        printf("there is a check in Delayed callback\n");
         return true;
     }
     else{

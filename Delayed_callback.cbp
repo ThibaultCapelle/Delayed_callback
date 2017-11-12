@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="Delayed_callback.cpp" />
 		<Unit filename="Delayed_callback.h" />
+		<Unit filename="Event_list.cpp" />
+		<Unit filename="Event_list.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -6,26 +6,29 @@
 
 using namespace std;
 
-time_t t=time(0);
 void hello(){
     cout<<"hello"<< endl;
+    //events.add(&hello, 2);
 }
+
+Event_list events(&hello, time(0), 7);
+
 
 void coucou(){
     printf("bonjour\n");
+    //events.add(&coucou, time(0), 2);
 }
 
 int main()
 {
-    Event_list events(&hello, 7);
     //Delayed_callback test(time(0),2,&hello);
     //cout << time(0) << endl;
     //test.callback();
-    events.add(&coucou, 2);
-    events.add(&coucou, 3);
-    events.add(&hello, 5);
-    events.add(&hello, 10);
-    events.add(&coucou, 3);
+    events.add(&coucou, time(0), 3);
+    events.add(&coucou, time(0), 3);
+    events.add(&hello, time(0), 3);
+    events.add(&hello, time(0), 10);
+    events.add(&coucou, time(0), 3);
     //events.add(&coucou, 7.5);
     while(events.get_length()>0){
         printf("length of events is %d\n",events.get_length());
