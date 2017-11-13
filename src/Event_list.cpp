@@ -5,7 +5,6 @@ using namespace std;
 Event_list::Event_list()
 {
     m_top_node = 0;
-    //ctor
 }
 
 Event_list::Event_list(void (*callback)(void), unsigned long t_ini, unsigned long delay){

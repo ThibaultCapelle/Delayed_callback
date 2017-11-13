@@ -32,11 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Delayed_callback.cpp" />
-		<Unit filename="Delayed_callback.h" />
-		<Unit filename="Event_list.cpp" />
-		<Unit filename="Event_list.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Delayed_callback.cpp" />
+		<Unit filename="src/Delayed_callback.h" />
+		<Unit filename="src/Event_list.cpp" />
+		<Unit filename="src/Event_list.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

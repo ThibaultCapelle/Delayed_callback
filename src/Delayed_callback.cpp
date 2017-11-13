@@ -4,6 +4,12 @@ using namespace std;
 
 Delayed_callback::Delayed_callback()
 {
+    m_next=0;
+    m_previous=0;
+    m_position=0;
+    m_t_final=0;
+    m_t_ini=0;
+    m_callback=0;
     //ctor
 }
 
